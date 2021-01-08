@@ -95,11 +95,11 @@ function App() {
   return (
       <Wrapper>
         <Canvas
-          camera={{ position: [0, 0, 5] }}
+          camera={{ position: [0, 0, 4.5] }}
           shadowMap
           colorManagement
         >
-          <ambientLight intensity={0.4} />
+          <ambientLight intensity={0.5} />
           <pointLight intensity={20} position={[-10, -25, -10]} color="#200f20" />
           <spotLight
             castShadow
@@ -112,13 +112,13 @@ function App() {
           
           <Controls
             //autoRotate
-            enablePan={true}
-            enableZoom={true}
+            enablePan={false}
+            enableZoom={false}
             enableDamping
             dampingFactor={0.5}
             rotateSpeed={1}
-            //maxPolarAngle={Math.PI / 2}
-            //minPolarAngle={Math.PI / 2}
+            maxPolarAngle={Math.PI / 2}
+            minPolarAngle={Math.PI / 2}
           />
           
         <Suspense fallback={null}>
