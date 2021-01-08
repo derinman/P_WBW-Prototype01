@@ -11,24 +11,74 @@ import MartirezRoomGltf from './resources/gltf/OweRagnarMartirezRoom.glb'
 
 const Wrapper = styled.div`
   position: relative;
-  height: 100vh;
+  height:100vh;
   width: 100vw;
+  background-color:#1c2d4b;
   overflow: hidden;
 `;
 
-const MartirezRoom = (props)=> {
-  const group = useRef()
-  const gltf = useLoader(GLTFLoader, MartirezRoomGltf, (loader) => {
+const MartirezRoom = ()=> {
+
+  const {nodes} = useLoader(GLTFLoader, MartirezRoomGltf, (loader) => {
     const dracoLoader = new DRACOLoader()
     dracoLoader.decoderPath = '/draco-gltf/'
     loader.setDRACOLoader(dracoLoader)
   })
-  //console.log(gltf);
+  const group = useRef();
 
-  console.log(gltf)
+  console.log(nodes)
 
   return (
-    <div/>
+    <group
+      ref={group}
+    >
+      <mesh
+        geometry={nodes.room.geometry}
+        material={nodes.room.material}
+      />
+      <mesh
+          geometry={nodes.room.children[0].geometry}
+          material={nodes.room.children[0].material}
+      />
+      <mesh
+          geometry={nodes.room.children[1].geometry}
+          material={nodes.room.children[1].material}
+      />
+      <mesh
+          geometry={nodes.room.children[2].geometry}
+          material={nodes.room.children[2].material}
+      />
+
+      <mesh
+          geometry={nodes.Hand.geometry}
+          material={nodes.Hand.material}
+      />
+      <mesh
+          geometry={nodes.Cone.geometry}
+          material={nodes.Cone.material}
+      />
+      <mesh
+          geometry={nodes.Cube.geometry}
+          material={nodes.Cube.material}
+      />
+      <mesh
+          geometry={nodes.Icosphere.geometry}
+          material={nodes.Icosphere.material}
+      />
+      <mesh
+          geometry={nodes.Sphere.geometry}
+          material={nodes.Sphere.material}
+      />
+      <mesh
+          geometry={nodes.Sphere001.geometry}
+          material={nodes.Sphere001.material}
+      />
+      <mesh
+          geometry={nodes.Sphere002.geometry}
+          material={nodes.Sphere002.material}
+      />
+
+    </group>
   )
 }
 
@@ -44,13 +94,11 @@ const Controls = (props) => {
 function App() {
   return (
       <Wrapper>
-        <Suspense fallback={null}>
-        <MartirezRoom/>
-        </Suspense>
         <Canvas
-          style={{ background: 'radial-gradient(at 50% 70%, #200f20 40%, #090b1f 80%, #050523 100%)' }}
-          camera={{ position: [0, 0, 15] }}
-          shadowMap>
+          camera={{ position: [0, 0, 5] }}
+          shadowMap
+          colorManagement
+        >
           <ambientLight intensity={0.4} />
           <pointLight intensity={20} position={[-10, -25, -10]} color="#200f20" />
           <spotLight
@@ -62,19 +110,21 @@ function App() {
             shadow-mapSize-height={2048}
           />
           
-          {/*<fog attach="fog" args={['#090b1f', 0, 25]} />*/}
-          {/*關掉看看*/}
-
           <Controls
-            autoRotate
-            enablePan={false}
-            enableZoom={false}
+            //autoRotate
+            enablePan={true}
+            enableZoom={true}
             enableDamping
             dampingFactor={0.5}
             rotateSpeed={1}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 2}
+            //maxPolarAngle={Math.PI / 2}
+            //minPolarAngle={Math.PI / 2}
           />
+          
+        <Suspense fallback={null}>
+          <MartirezRoom/>
+        </Suspense>
+
         </Canvas>
       </Wrapper>
   );
