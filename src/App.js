@@ -7,7 +7,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import styled from 'styled-components';
 
-import MartirezRoomGltf from './resources/gltf/OweRagnarMartirezRoom.glb'
+import MartirezRoomGltf from './resources/gltf/Owe Ragnar Martirez Room.glb'
 
 const Wrapper = styled.div`
   position: relative;
