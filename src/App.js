@@ -95,23 +95,28 @@ function App() {
   return (
       <Wrapper>
         <Canvas
-          camera={{ position: [0, 0, 4.5] }}
+          camera={{ position: [0, 0, 6.5] }}
           shadowMap
           colorManagement
         >
-          <ambientLight intensity={0.5} />
-          <pointLight intensity={20} position={[-10, -25, -10]} color="#200f20" />
+          <ambientLight intensity={0.2} color={'#78d7e3'}/>
+          <pointLight intensity={50} position={[0, 100, 0]} color={'#e3ac78'}/>
+
+          <pointLight intensity={0.5} position={[10, 0, 0]} />
+          <pointLight intensity={0.5} position={[0,0, 10]} />
+          <pointLight intensity={0.5} position={[0, 0, -10]} />
+          <pointLight intensity={0.5} position={[-10, 0, 0]} />
+          
           <spotLight
-            castShadow
-            intensity={4}
-            angle={Math.PI / 8}
-            position={[15, 25, 5]}
+            intensity={2}
+            angle={Math.PI / 10}
+            position={[0, 10, 0]}
+            penumbra={1}
             shadow-mapSize-width={2048}
             shadow-mapSize-height={2048}
           />
-          
           <Controls
-            //autoRotate
+            autoRotate
             enablePan={false}
             enableZoom={false}
             enableDamping
