@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   position: relative;
   height:100vh;
   width: 100vw;
-  background-color:#1c2d4b;
+  background: linear-gradient(180deg, rgba(28,45,75,1) 70%, rgba(170,170,170,1) 100%);
   overflow: hidden;
 `;
 
@@ -95,26 +95,19 @@ function App() {
   return (
       <Wrapper>
         <Canvas
-          camera={{ position: [0, 0, 6.5] }}
+          camera={{ position: [0, 0, 6] , fov:50}}
           shadowMap
           colorManagement
         >
-          <ambientLight intensity={0.2} color={'#78d7e3'}/>
-          <pointLight intensity={50} position={[0, 100, 0]} color={'#e3ac78'}/>
-
-          <pointLight intensity={0.5} position={[10, 0, 0]} />
-          <pointLight intensity={0.5} position={[0,0, 10]} />
-          <pointLight intensity={0.5} position={[0, 0, -10]} />
-          <pointLight intensity={0.5} position={[-10, 0, 0]} />
+        
           
-          <spotLight
-            intensity={2}
-            angle={Math.PI / 10}
-            position={[0, 10, 0]}
-            penumbra={1}
-            shadow-mapSize-width={2048}
-            shadow-mapSize-height={2048}
-          />
+          <pointLight intensity={1} position={[4, 0, 4]} color={'#e8cdcc'} decay={2}/>
+          <pointLight intensity={1} position={[-4,0, 4]} color={'#e8cdcc'} decay={2}/>
+          <pointLight intensity={1} position={[4, 0, -4]} color={'#e8cdcc'} decay={2}/>
+          <pointLight intensity={1} position={[-4, 0, -4]} color={'#e8cdcc'} decay={2}/>
+          
+          <pointLight intensity={2} position={[0, -3, 0]} color={'#f2ca66'} decay={2}/>
+          
           <Controls
             autoRotate
             enablePan={false}
