@@ -34,11 +34,10 @@ const MartirezRoom = ()=> {
 
   const {scale1} = useSpring({
     scale1: isHover ? 0.5 : 1 ,
-    //delay: 500,
     config: { mass: 1, tension: 280, friction: 120 }
   })
 
-  console.log(scale1)
+  console.log(nodes)
 
   return (
     <group
@@ -71,26 +70,36 @@ const MartirezRoom = ()=> {
           geometry={nodes.Cone.geometry}
           material={nodes.Cone.material}
           scale={scale1.interpolate(r => [r, r, r])}
+          onPointerOver={() => setIsHover(true)} 
+          onPointerOut={() => setIsHover(false)}
       />
       <a.mesh
           geometry={nodes.Cube.geometry}
           material={nodes.Cube.material}
           scale={scale1.interpolate(r => [r, r, r])}
+          onPointerOver={() => setIsHover(true)} 
+          onPointerOut={() => setIsHover(false)}
       />
       <a.mesh
           geometry={nodes.Icosphere.geometry}
           material={nodes.Icosphere.material}
           scale={scale1.interpolate(r => [r, r, r])}
+          onPointerOver={() => setIsHover(true)} 
+          onPointerOut={() => setIsHover(false)}
       />
       <a.mesh
           geometry={nodes.Sphere.geometry}
           material={nodes.Sphere.material}
           scale={scale1.interpolate(r => [r, r, r])}
+          onPointerOver={() => setIsHover(true)} 
+          onPointerOut={() => setIsHover(false)}
       />
       <a.mesh
           geometry={nodes.Sphere001.geometry}
           material={nodes.Sphere001.material}
           scale={scale1.interpolate(r => [r, r, r])}
+          onPointerOver={() => setIsHover(true)} 
+          onPointerOut={() => setIsHover(false)}
       />
       {/* cloud */}
       <a.mesh
@@ -118,19 +127,20 @@ function App() {
   return (
       <Wrapper>
         <Canvas
-          camera={{ position: [0, 0, 6] , fov:50}}
+          camera={{ position: [0, 0, 7.5] , fov:40}}
           shadowMap
           colorManagement
         >
         
           
           <pointLight intensity={1} position={[4, 0, 4]} color={'#e8cdcc'} decay={2}/>
-          <pointLight intensity={1} position={[-4,0, 4]} color={'#e8cdcc'} decay={2}/>
-          <pointLight intensity={1} position={[4, 0, -4]} color={'#e8cdcc'} decay={2}/>
+          <pointLight intensity={0.7} position={[-4,0, 4]} color={'#e8cdcc'} decay={2}/>
+          <pointLight intensity={0.7} position={[4, 0, -4]} color={'#e8cdcc'} decay={2}/>
           <pointLight intensity={1} position={[-4, 0, -4]} color={'#e8cdcc'} decay={2}/>
           
           <pointLight intensity={2} position={[0, -3, 0]} color={'#f2ca66'} decay={2}/>
           
+
           <Controls
             //autoRotate
             enablePan={false}
