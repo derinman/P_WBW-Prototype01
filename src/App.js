@@ -127,7 +127,7 @@ function App() {
   return (
       <Wrapper>
         <Canvas
-          camera={{ position: [0, 0, 7.5] , fov:40}}
+          camera={{ position: [0, 0, 10] , fov:40}}
           shadowMap
           colorManagement
         >
